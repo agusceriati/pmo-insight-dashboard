@@ -1,0 +1,21 @@
+Project ID,Project Name,Project Manager,Department,Status,Progress,Risk Level,Budget,Actual Spend
+PRJ-001,CRM Migration,Agustin,Operations,On Track,75,Low,50000,35000
+PRJ-002,ERP Upgrade,Kevin,IT,Delayed,40,High,80000,85000
+PRJ-003,Cloud Migration,Luciano,Infrastructure,At Risk,60,Medium,60000,45000
+PRJ-004,Data Warehouse,Santiago,Data,Completed,100,Low,40000,39000
+PRJ-005,HR Portal,Mario,HR,On Track,82,Low,25000,18000
+PRJ-006,Finance Automation,Ana,Finance,Delayed,35,High,45000,50000
+PRJ-007,Service Desk Upgrade,Lucas,IT,On Track,70,Medium,30000,20000
+PRJ-008,Mobile App,Carla,Product,At Risk,55,Medium,55000,52000
+PRJ-009,Reporting Platform,Marcos,Operations,On Track,90,Low,70000,55000
+PRJ-010,Procurement Tool,Sofia,Procurement,Completed,100,Low,20000,19500
+PRJ-011,Inventory System,Pedro,Operations,On Track,65,Medium,35000,25000
+PRJ-012,Customer Portal,Laura,Product,Delayed,45,High,65000,67000
+PRJ-013,API Modernization,Juan,IT,On Track,78,Low,50000,32000
+PRJ-014,Security Program,Martin,Cybersecurity,At Risk,58,High,90000,60000
+PRJ-015,Data Governance,Rocio,Data,On Track,72,Medium,42000,28000
+PRJ-016,Compliance Initiative,Camila,Legal,Completed,100,Low,22000,21500
+PRJ-017,Workforce Planning,Diego,HR,On Track,80,Low,38000,27000
+PRJ-018,Knowledge Base,Valeria,Operations,Delayed,30,High,18000,21000
+PRJ-019,BI Expansion,Nicolas,Data,At Risk,62,Medium,48000,35000
+PRJ-020,Cloud Optimization,Federico,Infrastructure,On Track,85,Low,75000,50000
