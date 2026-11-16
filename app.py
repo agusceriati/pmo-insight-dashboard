@@ -18,13 +18,35 @@ st.set_page_config(
 
 
 # ==================================================
+# HEALTH STATUS CALCULATION
+# Classify projects based on risk and status
+# ==================================================
+
+def calculate_health(row):
+    if row["Status"] == "Delayed" or row["Risk Level"] == "High":
+        return "🔴 Critical"
+    elif row["Risk Level"] == "Medium":
+        return "🟡 Warning"
+    else:
+        return "🟢 Healthy"
+
+
+# ==================================================
 # DATA LOADING
 # Load project portfolio data from CSV file
 # ==================================================
 
 df = pd.read_csv("data/sample_projects.csv")
 
-# Sidebar filters
+# Health status needs df to exist first, and must be added
+# before filtering so it shows up in every table
+df["Health Status"] = df.apply(calculate_health, axis=1)
+
+
+# ==================================================
+# SIDEBAR FILTERS
+# ==================================================
+
 st.sidebar.header("Filters")
 
 selected_status = st.sidebar.multiselect(
@@ -45,35 +67,24 @@ filtered_df = df[
     (df["Department"].isin(selected_department))
 ]
 
-# ==================================================
-# HEALTH STATUS CALCULATION
-# Classify projects based on risk and status
-# ==================================================
-
-def calculate_health(row):
-    if row["Status"] == "Delayed" or row["Risk Level"] == "High":
-        return "🔴 Critical"
-    elif row["Risk Level"] == "Medium":
-        return "🟡 Warning"
-    else:
-        return "🟢 Healthy"
-
-
-df["Health Status"] = df.apply(calculate_health, axis=1)
+# Stop early if the filters leave no projects (avoids division by zero)
+if filtered_df.empty:
+    st.warning("No hay proyectos con los filtros seleccionados.")
+    st.stop()
 
 
 # ==================================================
 # PORTFOLIO KPI CALCULATIONS
 # ==================================================
 
-total_projects = len(df)
-on_track = len(df[df["Status"] == "On Track"])
-at_risk = len(df[df["Status"] == "At Risk"])
-delayed = len(df[df["Status"] == "Delayed"])
-completed = len(df[df["Status"] == "Completed"])
-high_risk = len(df[df["Risk Level"] == "High"])
+total_projects = len(filtered_df)
+on_track = len(filtered_df[filtered_df["Status"] == "On Track"])
+at_risk = len(filtered_df[filtered_df["Status"] == "At Risk"])
+delayed = len(filtered_df[filtered_df["Status"] == "Delayed"])
+completed = len(filtered_df[filtered_df["Status"] == "Completed"])
+high_risk = len(filtered_df[filtered_df["Risk Level"] == "High"])
 
-average_progress = round(df["Progress"].mean(), 1)
+average_progress = round(filtered_df["Progress"].mean(), 1)
 
 
 # ==================================================
@@ -107,6 +118,7 @@ st.subheader("Projects")
 
 st.dataframe(filtered_df)
 
+
 # ==================================================
 # STATUS DISTRIBUTION
 # Project status overview
@@ -135,13 +147,13 @@ st.bar_chart(risk_counts)
 # FINANCIAL METRICS
 # ==================================================
 
-total_budget = df["Budget"].sum()
-total_spend = df["Actual Spend"].sum()
+total_budget = filtered_df["Budget"].sum()
+total_spend = filtered_df["Actual Spend"].sum()
 
 budget_utilization = round(
     (total_spend / total_budget) * 100,
     1
-)
+) if total_budget > 0 else 0
 
 st.subheader("Financial Overview")
 
@@ -157,9 +169,9 @@ col3.metric("Budget Utilization", f"{budget_utilization}%")
 # Delayed projects or high-risk initiatives
 # ==================================================
 
-attention_projects = df[
-    (df["Status"] == "Delayed") |
-    (df["Risk Level"] == "High")
+attention_projects = filtered_df[
+    (filtered_df["Status"] == "Delayed") |
+    (filtered_df["Risk Level"] == "High")
 ]
 
 st.subheader("Projects Requiring Attention")
@@ -174,7 +186,4 @@ st.dataframe(
             "Health Status",
             "Progress",
         ]
-    ]
-)
-
-
+    ] )
