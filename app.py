@@ -4,7 +4,7 @@
 
 import streamlit as st
 import pandas as pd
-
+import plotly.express as px
 
 # ==================================================
 # PAGE CONFIGURATION
@@ -123,24 +123,27 @@ st.dataframe(filtered_df)
 # STATUS DISTRIBUTION
 # Project status overview
 # ==================================================
-
-status_counts = filtered_df["Status"].value_counts()
+status_counts = filtered_df["Status"].value_counts().reset_index()
+status_counts.columns = ["Status", "Projects"]
 
 st.subheader("Status Distribution")
 
-st.bar_chart(status_counts)
-
-
+fig_status = px.pie(status_counts, names="Status", values="Projects")
+st.plotly_chart(fig_status)
 # ==================================================
 # RISK DISTRIBUTION
 # Risk level overview
 # ==================================================
 
-risk_counts = filtered_df["Risk Level"].value_counts()
+risk_counts = filtered_df["Risk Level"].value_counts().reset_index()
+risk_counts.columns = ["Risk Level", "Projects"]
 
 st.subheader("Risk Distribution")
 
-st.bar_chart(risk_counts)
+fig_risk = px.pie(risk_counts, names="Risk Level", values="Projects", hole=0.5)
+st.plotly_chart(fig_risk)
+
+
 
 
 # ==================================================
