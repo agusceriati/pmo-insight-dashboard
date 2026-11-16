@@ -123,7 +123,7 @@ streamlit run app.py
 
 ### Dashboard Overview
 
-![Dashboard Overview](images/dashboard-overview.png)
+![Dashboard Overview](Images/Dashboard-overview.png) 
 
 Portfolio KPIs, project tracking and executive reporting.
 
@@ -131,7 +131,7 @@ Portfolio KPIs, project tracking and executive reporting.
 
 ### Risk Analysis
 
-![Risk Analysis](Images/risk-analysis.png)
+![Risk Analysis](Images/Risk-analysis.png)
 
 Project status distribution and portfolio risk monitoring.
 
@@ -139,7 +139,7 @@ Project status distribution and portfolio risk monitoring.
 
 ### Progress Analysis
 
-![Project Progress](images/project-progress.png)
+![Project Progress](Images/Project-progress.png)
 
 Project completion tracking with health status indicators.
 
@@ -147,7 +147,7 @@ Project completion tracking with health status indicators.
 
 ### Financial Analysis
 
-![Financial Analysis](images/financial-analysis.png)
+![Financial Analysis](Images/Financial-analysis.png)
 
 Budget versus actual spend analysis, portfolio financial metrics and projects requiring attention.
 
