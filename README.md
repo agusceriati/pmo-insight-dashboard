@@ -1,6 +1,6 @@
 # 📊 PMO Insight Dashboard
 
-![Dashboard Overview](images/dashboard-overview.png)
+![Dashboard Overview](Images/Dashboard-overview.png)
 
 Interactive project portfolio dashboard built with Python, Streamlit, Pandas and Plotly.
 
