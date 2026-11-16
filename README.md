@@ -6,7 +6,11 @@ Interactive project portfolio dashboard built with Python, Streamlit, Pandas and
 
 The PMO Insight Dashboard provides a centralized view of project performance, portfolio risks, budget utilization and delivery progress through interactive analytics and executive KPI reporting.
 
+## 🚀 Live Demo
 
+https://https://pmo-insight-dashboard.streamlit.app/
+
+Interactive project portfolio dashboard built with Python, Streamlit, Pandas and Plotly.
 ---
 
 ## 🚀 Features
