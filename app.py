@@ -144,8 +144,68 @@ fig_risk = px.pie(risk_counts, names="Risk Level", values="Projects", hole=0.5)
 st.plotly_chart(fig_risk)
 
 
+# ==================================================
+# PROJECT PROGRESS ANALYSIS
+# ==================================================
 
+st.subheader("📈 Project Progress")
 
+fig_progress = px.bar(
+    filtered_df.sort_values(
+        by="Progress",
+        ascending=False
+    ),
+    x="Project Name",
+    y="Progress",
+    color="Health Status",
+    title="Project Progress by Initiative",
+    text="Progress"
+)
+
+fig_progress.update_traces(
+    texttemplate="%{text}%",
+    textposition="outside"
+)
+
+fig_progress.update_layout(
+    yaxis_title="Completion %",
+    xaxis_title=""
+)
+
+st.plotly_chart(
+    fig_progress,
+    use_container_width=True
+)
+
+# ==================================================
+# BUDGET VS ACTUAL SPEND
+# Financial performance by project
+# ==================================================
+
+st.subheader("💰 Budget vs Actual Spend")
+
+fig_budget = px.bar(
+    filtered_df.sort_values(
+        by="Budget",
+        ascending=False
+    ),
+    x="Project Name",
+    y=["Budget", "Actual Spend"],
+    barmode="group",
+    text_auto=True,
+    title="Budget Performance by Project"
+)
+
+fig_budget.update_layout(
+    yaxis_title="Amount ($)",
+    xaxis_title="",
+    xaxis_tickangle=-45
+)
+
+st.plotly_chart(
+    fig_budget,
+    use_container_width=True
+)
 # ==================================================
 # FINANCIAL METRICS
 # ==================================================
@@ -190,3 +250,5 @@ st.dataframe(
             "Progress",
         ]
     ] )
+
+
