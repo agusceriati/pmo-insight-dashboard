@@ -8,7 +8,7 @@ The PMO Insight Dashboard provides a centralized view of project performance, po
 
 ## 🚀 Live Demo
 
-https://https://pmo-insight-dashboard.streamlit.app/
+https://pmo-insight-dashboard.streamlit.app/
 
 Interactive project portfolio dashboard built with Python, Streamlit, Pandas and Plotly.
 ---
